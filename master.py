@@ -6,8 +6,18 @@ import selectors
 
 class Master(node.Node):
     # sid 0 means unassigned
-    def __init__(self, ip = '', role = 'node'):
+    def __init__(self, ip = '', role = 'master'):
         super().__init__(ip, role)
+
+    def handle_message(self, cmds):
+        #test message
+        recv_ip = cmds.ip
+        msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
+        self.node_log.write('\n Data outbound: \n')
+        self.node_log.write(str(msg))
+        self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
+
+        #TODO handle all possible incoming messages
 
     def run(self): # override from standard node
         self.lsock.bind((self.ip, config.PORT))
