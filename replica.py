@@ -7,9 +7,47 @@ import selectors
 
 class Replica(node.Node):
     # sid 0 means unassigned
-    def __init__(self, ip = '', master_ip = '', role = 'node'):
+    def __init__(self, ip = '', master_ip = '', role = 'replica_unnamed'):
         super().__init__(ip, role)
         self.master_ip = master_ip
+
+        # *** Linearized Consistency Attributes ***
+        # TODO
+
+        # *** Sequential Consistency Attributes ***
+        # TODO
+        
+        # *** Causal Consistency Attributes ***
+        # TODO
+        
+        # *** Eventual Consistency Attributes ***
+        # TODO but might not be necessary
+
+
+    def handle_message(self, cmds):
+        #TODO handle all possible messages from master
+        consistency = cmds.consis
+        if(consistency == 0):
+            # *** Linearized Consistency Requests ***
+            # TODO
+            pass
+        elif(consistency == 1):
+            # *** Sequential Consistency Requests ***
+            # TODO
+            pass
+        elif(consistency == 2):
+            # *** Causal Consistency Requests ***
+            # TODO
+            pass
+        elif(consistency == 3):
+            # *** Eventual Consistency Requests ***
+            # TODO
+            pass
+        else:
+            #incorrect consistency type
+            pass
+        
+
 
 
     def run(self): #override node run method

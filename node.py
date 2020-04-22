@@ -29,7 +29,6 @@ class Node():
         self.node_log = logger.Logger('log.txt', '', self.role)
         self.node_log.write('Im Alive \n')
 
-
     def kill(self):
         #final msg to master
         #death_letter = msg_pb2.Slave()
@@ -64,6 +63,9 @@ class Node():
 
         return 1
 
+    # this method is meant to be overridden
+    def handle_message(self, cmds):
+        raise NotImplementedError('Error: Subclass has not implemented handle_message method')
 
 
     # *** SERVER Defs ***
@@ -98,6 +100,7 @@ class Node():
                     self.node_log.write('\nmessage error: either not a proto buffer or incorrect type')
 
                 #TODO do stuff with commands (cmds)
+                self.handle_message(cmds)
 
 
 
