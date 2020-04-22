@@ -8,31 +8,25 @@ replica1 spawned
 replica2 spawned
 
 replica3 spawned
-accepted connection from('127.0.0.1', 64764)
+accepted connection from('127.0.0.1', 50048)
+accepted connection from('127.0.0.1', 50049)
 
 Connected ip:127.0.0.1
 ip: "127.0.0.21"
-request: NULL
-ack: OK
 data: "hey there Im up"
 num_chunks: 1
 
-accepted connection from('127.0.0.1', 64766)
 
 Connected ip:127.0.0.1
 ip: "127.0.0.22"
-request: NULL
-ack: OK
 data: "hey there Im up"
 num_chunks: 1
 
-accepted connection from('127.0.0.1', 64768)
+accepted connection from('127.0.0.1', 50050)
 
 Connected ip:127.0.0.1
 ip: "127.0.0.23"
-request: NULL
-ack: OK
 data: "hey there Im up"
 num_chunks: 1
 
-<__main__.Master object at 0x032AA880>
+<master.Master object at 0x036B0190>
