@@ -1,0 +1,13 @@
+This is the first line of the log
+Im Alive 
+
+listening on('127.0.0.22', 65432)
+
+ Data outbound: 
+
+ip: "127.0.0.22"
+data: "hey there Im up"
+num_chunks: 1
+
+starting connection1to('127.0.0.11', 65432)
+<__main__.Replica object at 0x019C9F90>
