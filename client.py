@@ -11,6 +11,13 @@ class Client(node.Node):
         super().__init__(ip, role)
         self.master_ip = master_ip
 
+    def handle_message(self, cmds):
+        #test message
+        recv_ip = cmds.ip
+        msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
+        self.node_log.write('\n Data outbound: \n')
+        self.node_log.write(str(msg))
+        self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
 
     def run(self): #override node run method
         self.lsock.bind((self.ip, config.PORT))
@@ -23,7 +30,7 @@ class Client(node.Node):
         self.node_log.write('\n Data outbound: \n')
         self.node_log.write(str(msg))
         self.start_connections(self.master_ip, config.PORT, 1, msg.SerializeToString())
-        print('im running!')
+        print('Client is running')
         try:
             while True:
                 events = self.sel.select(timeout=None)
@@ -39,8 +46,6 @@ class Client(node.Node):
         finally:
             self.sel.close()
 
-print(len(sys.argv))
-print(sys.argv[0])
 
 if(len(sys.argv) == 4):
     test = Client(sys.argv[1], sys.argv[2], sys.argv[3])

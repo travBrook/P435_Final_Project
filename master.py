@@ -56,10 +56,7 @@ class Master(node.Node):
             self.sel.close()
 
 
-print(len(sys.argv))
-print(sys.argv[0])
-
-if(len(sys.argv) == 4):
+if(len(sys.argv) == 3):
     print('boot master')
     test = Master(sys.argv[1], sys.argv[2])
     #test = Master(config.MASTER_IP)
