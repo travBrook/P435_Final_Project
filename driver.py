@@ -14,6 +14,13 @@ def run():
     #Spawn Client
     proc_id = subprocess.Popen([sys.executable, './client.py', config.CLIENT_IP, config.MASTER_IP,'Client1'])
 
+    # keep running to listen for kill command
+    try:
+        while True:
+            pass
+    except KeyboardInterrupt:
+        print('keyboard interrupt, exiting...')
+
 
 
 #main

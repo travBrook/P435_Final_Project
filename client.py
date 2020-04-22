@@ -14,10 +14,10 @@ class Client(node.Node):
     def handle_message(self, cmds):
         #test message
         recv_ip = cmds.ip
-        msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
-        self.node_log.write('\n Data outbound: \n')
-        self.node_log.write(str(msg))
-        self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
+        #msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
+        #self.node_log.write('\n Data outbound: \n')
+        #self.node_log.write(str(msg))
+        #self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
 
     def run(self): #override node run method
         self.lsock.bind((self.ip, config.PORT))

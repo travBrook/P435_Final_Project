@@ -29,12 +29,12 @@ class Master(node.Node):
         #spawn rep 1
         proc_id = subprocess.Popen([sys.executable, './replica.py', config.REPLICA1_IP, self.ip, 'replica1'])
         self.node_log.write('\n' + 'replica1 spawned')
-        time.sleep(1)
+        #time.sleep(1)
 
         #spawn rep 2
         proc_id = subprocess.Popen([sys.executable, './replica.py', config.REPLICA2_IP, self.ip, 'replica2'])
         self.node_log.write('\n' + 'replica2 spawned')
-        time.sleep(1)
+        #time.sleep(1)
 
         #spawn rep 3
         proc_id = subprocess.Popen([sys.executable, './replica.py', config.REPLICA3_IP, self.ip, 'replica3'])
