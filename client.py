@@ -31,12 +31,12 @@ class Client(node.Node):
         for message in messages:
             self.l_clock += 1
             msg = build_msg.build(self.ip, message[0], message[1], 1, message[2], self.l_clock)
-            self.start_connections(self.master_ip, config.PORT, 1, msg.SerializeToString())
+            self.start_connections(self.master_ip, msg.SerializeToString())
             self.node_log.write('\n Data outbound: \n')
             self.node_log.write(str(msg))
 
-    
         print('Client is running')
+        
         try:
             while True:
                 events = self.sel.select(timeout=None)

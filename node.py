@@ -116,9 +116,9 @@ class Node():
                 sent = sock.send(data.outb)  # Should be ready to write
                 data.outb = data.outb[sent:]
 
-    def start_connections(self, host, port, num_conns, open_msg): # open_msg has to be in bytes
-        server_addr = (host, port)
-        for i in range(0, num_conns):
+    def start_connections(self, host, open_msg): # open_msg has to be in bytes
+        server_addr = (host, config.PORT)
+        for i in range(0, 1):
             connid = i + 1
             self.node_log.write('starting connection' + str(connid) + 'to' + str(server_addr))
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

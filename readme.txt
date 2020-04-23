@@ -14,13 +14,13 @@
 - execution order:
     1. driver.py spawns master.py and client.py processes
     2. master.py spawns 3 replica.py processes
-    3. client.py sends all messages in static 'message' list to master
+    3. client.py sends all messages in static 'messages' list to master
     4. master catalogs requests and forwards to replica (logic for which replica may depend on consistency model)
     5. replicas do their thing and respond to master
     6. master looks up original request to find client ip and sends message to client
 
 *Run notes*
-- For testing, add your messages/requests to message list and run normally
+- For testing, add your messages/requests to messages list and run normally
 - Sending messages:
     > use start_connections(dest_ip, <Message>) to send messages to other processes
     > Message object is a protobuffer, if you have issues working with them please contact Dexter or Travis

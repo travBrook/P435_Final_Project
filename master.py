@@ -31,11 +31,8 @@ class Master(node.Node):
             toReplica = build_msg.build(self.ip, cmds.consis, cmds.request, 
             cmds.ack, cmds.data, cmds.l_Clock, self.currentRID)
 
-            self.node_log.write('\n Data outbound: \n')
-            self.node_log.write(str(toReplica))
-
             #TODO send to random? replica. 
-            self.start_connections(self.replicaRoster[0], config.PORT, 1, toReplica.SerializeToString())
+            self.start_connections(self.replicaRoster[0], toReplica.SerializeToString())
 
         ### Handle Replica message
         else : 
@@ -52,11 +49,9 @@ class Master(node.Node):
                     toClient = build_msg.build(self.ip, cmds.consis, cmds.request,
                     cmds.ack, 'REQUEST FAILURE', self.l_clock, cmds.rID)
 
-                self.node_log.write('\n Data outbound: \n')
-                self.node_log.write(str(toClient))
                 client = self.registry[cmds.rID]
                 del self.registry[cmds.rID]
-                self.start_connections(client, config.PORT, 1, toClient.SerializeToString())
+                self.start_connections(client, toClient.SerializeToString())
 
     def run(self): # override from standard node
         self.lsock.bind((self.ip, config.PORT))

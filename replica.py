@@ -82,7 +82,7 @@ class Replica(node.Node):
         #Log and send off to master
         self.node_log.write('\n Data outbound: \n')
         self.node_log.write(str(toMaster))
-        self.start_connections(self.master_ip, config.PORT, 1, toMaster.SerializeToString())
+        self.start_connections(self.master_ip, toMaster.SerializeToString())
 
 
     def run(self): #override node run method
@@ -95,7 +95,7 @@ class Replica(node.Node):
         msg = build_msg.build(self.ip, 0, 0, 0, 'hey there Im up', self.l_clock)
         self.node_log.write('\n Data outbound: \n')
         self.node_log.write(str(msg))
-        self.start_connections(self.master_ip, config.PORT, 1, msg.SerializeToString())
+        self.start_connections(self.master_ip, msg.SerializeToString())
         print('im running!')
         try:
             while True:
