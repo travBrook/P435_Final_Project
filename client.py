@@ -5,7 +5,7 @@ import sys, subprocess, time
 import selectors
 
 #triples of (consis, request, Data)
-messages = [(1, 1, "key1 ::: value1"), (2, 2, "key1")]
+messages = [(0, 1, "key1 ::: value1"), (0, 2, "key1")]
 
 class Client(node.Node):
 
@@ -17,10 +17,9 @@ class Client(node.Node):
     def handle_message(self, cmds):
         #test message
         recv_ip = cmds.ip
-        #msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
-        #self.node_log.write('\n Data outbound: \n')
-        #self.node_log.write(str(msg))
-        #self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
+        print("Client has mail!")
+        #print(str(cmds))
+
 
     def run(self): #override node run method
         self.lsock.bind((self.ip, config.PORT))
@@ -28,17 +27,15 @@ class Client(node.Node):
         self.node_log.write('listening on' + str((self.ip, config.PORT)))
         self.lsock.setblocking(False)
         self.sel.register(self.lsock, selectors.EVENT_READ, data=None)
-        #msg = msg_pb2.Message()
-        #msg = build_msg.build(self.ip, 0, 0, 0, 'hey there Im up',1)
         
         for message in messages:
             self.l_clock += 1
-            msg = build_msg.build(self.ip, message[0], message[1], 1, message[2], self.l_clock, 1)
+            msg = build_msg.build(self.ip, message[0], message[1], 1, message[2], self.l_clock)
             self.start_connections(self.master_ip, config.PORT, 1, msg.SerializeToString())
             self.node_log.write('\n Data outbound: \n')
             self.node_log.write(str(msg))
 
-        #self.start_connections(self.master_ip, config.PORT, 1, msg.SerializeToString())
+    
         print('Client is running')
         try:
             while True:

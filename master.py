@@ -4,20 +4,59 @@ import node
 import sys, subprocess, time
 import selectors
 
+
+
 class Master(node.Node):
     # sid 0 means unassigned
     def __init__(self, ip = '', role = 'master'):
         super().__init__(ip, role)
+        self.currentRID = 0
+        self.registry = {}
+        self.replicaRoster = [config.REPLICA1_IP, config.REPLICA2_IP, config.REPLICA3_IP]
 
     def handle_message(self, cmds):
         #test message
         recv_ip = cmds.ip
-        msg = build_msg.build(self.ip, 0, 0, 0, 'I hear ya',1)
-        self.node_log.write('\n Data outbound: \n')
-        self.node_log.write(str(msg))
-        self.start_connections(recv_ip, config.PORT, 1, msg.SerializeToString())
 
         #TODO handle all possible incoming messages
+        #TODO update l_clocks?
+
+        ### Handle Client message
+        if recv_ip not in self.replicaRoster :
+            pass
+            self.currentRID += 1
+            self.registry[self.currentRID] = cmds.ip
+
+            #Message to send to replica
+            toReplica = build_msg.build(self.ip, cmds.consis, cmds.request, 
+            cmds.ack, cmds.data, cmds.l_Clock, self.currentRID)
+
+            self.node_log.write('\n Data outbound: \n')
+            self.node_log.write(str(toReplica))
+
+            #TODO send to random? replica. 
+            self.start_connections(self.replicaRoster[0], config.PORT, 1, toReplica.SerializeToString())
+
+        ### Handle Replica message
+        else : 
+        
+            if cmds.rID != 0 :
+                if cmds.ack == 1:
+                    #Answer a successful request to client
+                    toClient = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                    cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
+                
+                elif cmds.ack == 0:
+                    #Answer failure of Request to client 
+                    pass
+                    toClient = build_msg.build(self.ip, cmds.consis, cmds.request,
+                    cmds.ack, 'REQUEST FAILURE', self.l_clock, cmds.rID)
+
+                self.node_log.write('\n Data outbound: \n')
+                self.node_log.write(str(toClient))
+                client = self.registry[cmds.rID]
+                del self.registry[cmds.rID]
+                self.start_connections(client, config.PORT, 1, toClient.SerializeToString())
 
     def run(self): # override from standard node
         self.lsock.bind((self.ip, config.PORT))

@@ -29,8 +29,9 @@ message Message {
   AckType ack = 4;
 
   string data = 5;
-  int64 num_chunks = 6;
 
-  int32 L_Clock = 7;
+  int32 l_Clock = 7;
+
+  int32 rID = 8;
 
 }
