@@ -7,10 +7,11 @@ message Message {
   string ip = 1;
 
   enum ConType {
-    LINEARIZED = 0;
-    SEQUENTIAL = 1;
-    CAUSAL = 2;
-    EVENTUAL = 3;
+    NO_TYPE = 0;
+    LINEARIZED = 1;
+    SEQUENTIAL = 2;
+    CAUSAL = 3;
+    EVENTUAL = 4;
   }
   ConType consis = 2;
 
@@ -29,5 +30,7 @@ message Message {
 
   string data = 5;
   int64 num_chunks = 6;
+
+  int32 L_Clock = 7;
 
 }

@@ -18,6 +18,7 @@ class Node():
         self.ip = ip
         self.role = role
         self.data = ''
+        self.l_clock = 0
 
         #socket stuffs
         self.sel = selectors.DefaultSelector()
@@ -39,7 +40,7 @@ class Node():
         self.node_log.output_log()
         os.kill(self.pid, 0)
     
-    def transmit_data(self, ip, ack, data): #data should be string
+    def transmit_data(self, ip, consis, request, ack, data): #data should be string
         data_in =  data
         self.node_log.write('\nsplit input data: \n' + str(data_in))
         data_out = list()
@@ -53,10 +54,11 @@ class Node():
                 tmp = ''
         data_out.append(tmp)
         self.node_log.write('\nOutbound data: \n' + str(data_out))
+        print(str(data_out))
         self.node_log.write('\nNum Chunks: \n' + str(len(data_out)))
         for chunk in data_out:
             outb_msg = msg_pb2.Message()
-            outb_msg = build_msg.build(ip, self.role, 2, ack, str(chunk), len(data_out))
+            outb_msg = build_msg.build(ip, consis, request, ack, str(chunk), len(data_out))
             self.start_connections(ip, config.PORT, 1, outb_msg.SerializeToString())
 
         #TODO **** Update with new proto
