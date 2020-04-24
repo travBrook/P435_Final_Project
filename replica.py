@@ -3,6 +3,7 @@ import msg_pb2, build_msg
 import node
 import sys
 import selectors
+import os
 
 
 class Replica(node.Node):
@@ -10,6 +11,9 @@ class Replica(node.Node):
     def __init__(self, ip = '', master_ip = '', role = 'replica_unnamed'):
         super().__init__(ip, role)
         self.master_ip = master_ip
+        self.registry = {}
+        self.replicaRoster = [config.REPLICA1_IP, config.REPLICA2_IP, config.REPLICA3_IP]
+
 
         self.allConsisDB = {}
 
@@ -46,44 +50,60 @@ class Replica(node.Node):
             # TODO
             pass
         else:
-            #incorrect consistency type
+            # incorrect consistency type
             pass
             self.basic(cmds)
 
-    ### No consistency maintained... 
+    ### No consistency maintained...? Or is this eventual... 
     #   TODO send set request to other replicas
     def basic(self, cmds):
         pass
         toMaster = msg_pb2.Message()
-        #Handle set request 
-        if cmds.request == 1:
-            newKV = cmds.data.split(" ::: ")
-            if len(newKV) == 2 :
-                self.allConsisDB[newKV[0]] = newKV[1]
-                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
+        if cmds.rID in self.registry.keys() :
+            # Do nothing if replica has already seen request
+            pass
+        else :
+            # Handle set request 
+            if cmds.request == 1:
+                newKV = cmds.data.split(" ::: ")
+                if len(newKV) == 2 :
 
-                ###TODO send to other replicas. hold rID in a dict to keep track? (master registry)
+                    self.allConsisDB[newKV[0]] = newKV[1]
 
-            else :
-                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                0, cmds.data, cmds.l_Clock, cmds.rID)
+                    # If msg from master, 
+                    # then it is the first replica to see it, and we should send a response    
+                    if cmds.ip == config.MASTER_IP :
+                        toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
 
-        #Handle get request
-        elif cmds.request == 2:
-            if cmds.data in self.allConsisDB:
-                pass
-                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                1, self.allConsisDB[cmds.data], cmds.l_Clock, cmds.rID)
-            else :
-                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                0, cmds.data, cmds.l_Clock, cmds.rID)
+                    # Send to other replicas if 
+                    for ip in self.replicaRoster : 
+                        if ip == self.ip :
+                            pass
+                        else : 
+                            toReplica = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                            cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
+                            self.start_connections(ip, toReplica.SerializeToString())
 
-        #Log and send off to master
-        self.node_log.write('\n Data outbound: \n')
-        self.node_log.write(str(toMaster))
-        self.start_connections(self.master_ip, toMaster.SerializeToString())
+                    # Add the request to the registry
+                    self.registry[cmds.rID] = cmds.ip
+                            
+                else :
+                    toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                    0, cmds.data, cmds.l_Clock, cmds.rID)
 
+            # Handle get request
+            elif cmds.request == 2:
+                if cmds.data in self.allConsisDB:
+                    pass
+                    toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                    1, self.allConsisDB[cmds.data], cmds.l_Clock, cmds.rID)
+                else :
+                    toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                    0, cmds.data, cmds.l_Clock, cmds.rID)
+
+            # Send off to master
+            self.start_connections(self.master_ip, toMaster.SerializeToString())
 
     def run(self): #override node run method
         self.lsock.bind((self.ip, config.PORT))
@@ -108,6 +128,11 @@ class Replica(node.Node):
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
             self.node_log.write(str(self))
+            self.node_log.write("\nAll consistencies DB : " + str(self.allConsisDB))
+            self.node_log.write("Linearized consistency DB : " + str(self.linearDB))
+            self.node_log.write("Sequential consistency DB : " + str(self.sequentialDB))
+            self.node_log.write("Causal consistency DB : " + str(self.causalDB))
+            self.node_log.write("Eventual consistency DB : " + str(self.eventualDB))
             self.node_log.output_log()
         finally:
             self.sel.close()
