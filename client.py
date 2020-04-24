@@ -51,6 +51,7 @@ class Client(node.Node):
             self.sel.close()
 
 
+### TODO add acceptance of additional args to accept user input of messages
 if(len(sys.argv) == 4):
     test = Client(sys.argv[1], sys.argv[2], sys.argv[3])
     test.run()
