@@ -55,5 +55,6 @@ class Client(node.Node):
 if(len(sys.argv) == 4):
     test = Client(sys.argv[1], sys.argv[2], sys.argv[3])
     test.run()
+    #if len(sys.argv) > )
 else:
     sys.exit(2)

@@ -49,14 +49,15 @@ class Replica(node.Node):
             # *** Eventual Consistency Requests ***
             # TODO
             pass
+            self.eventual(cmds)
         else:
             # incorrect consistency type
             pass
-            self.basic(cmds)
+            self.eventual(cmds)
 
     ### No consistency maintained...? Or is this eventual... 
     #   TODO send set request to other replicas
-    def basic(self, cmds):
+    def eventual(self, cmds):
         pass
         toMaster = msg_pb2.Message()
         if cmds.rID in self.registry.keys() :
@@ -69,6 +70,7 @@ class Replica(node.Node):
                 if len(newKV) == 2 :
 
                     self.allConsisDB[newKV[0]] = newKV[1]
+                    self.eventualDB[newKV[0]] = newKV[1]
 
                     # If msg from master, 
                     # then it is the first replica to see it, and we should send a response    

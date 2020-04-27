@@ -5,7 +5,8 @@
 log_path = './log/'
 
 # Network CONSTANTS:
-CLIENT_IP = '127.0.0.1' # + sid will be the assigned ip
+CLIENT1_IP = '127.0.0.1' # + sid will be the assigned ip
+CLIENT2_IP = '127.0.0.2'
 MASTER_IP = '127.0.0.11'
 REPLICA1_IP = '127.0.0.21'
 REPLICA2_IP = '127.0.0.22'

@@ -3,6 +3,7 @@ import msg_pb2, build_msg
 import node
 import sys, subprocess, time
 import selectors
+import random
 
 
 
@@ -32,7 +33,8 @@ class Master(node.Node):
             cmds.ack, cmds.data, cmds.l_Clock, self.currentRID)
 
             #TODO send to random? replica. 
-            self.start_connections(self.replicaRoster[0], toReplica.SerializeToString())
+
+            self.start_connections(self.replicaRoster[random.randrange(0, len(self.replicaRoster))], toReplica.SerializeToString())
 
         ### Handle Replica message
         else : 

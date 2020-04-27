@@ -75,7 +75,7 @@ class Node():
     def accept_wrapper(self, sock):
         conn, addr = sock.accept()  # Should be ready to read
         self.connected_ip = addr[0] # store ip of machine we are connected to
-        self.node_log.write('accepted connection from' + str(addr))
+        #self.node_log.write('accepted connection from' + str(addr))
         conn.setblocking(False)
         data = types.SimpleNamespace(connid = conn, addr=addr, inb=b'', outb=b'')
         events = selectors.EVENT_READ | selectors.EVENT_WRITE
@@ -92,7 +92,7 @@ class Node():
 
 
                 #who is the msg coming from?
-                self.node_log.write('\nConnected ip:' + self.connected_ip)
+                #self.node_log.write('\nConnected ip:' + self.connected_ip)
                 cmds = msg_pb2.Message() 
                 try:
                     cmds.ParseFromString(recv_data)
