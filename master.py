@@ -19,7 +19,6 @@ class Master(node.Node):
         recv_ip = cmds.ip
 
         #TODO handle all possible incoming messages
-        #TODO update l_clocks?
 
         ### Handle Client message
         if recv_ip not in self.replicaRoster :
@@ -60,7 +59,7 @@ class Master(node.Node):
                 #update processed_reqs
                 self.processed_reqs[cmds.rID] = (curr_req[0], curr_req[1], curr_time, proc_time)
 
-
+                #finalize request by sending to client
                 self.start_connections(client, toClient.SerializeToString())
 
     def run(self): # override from standard node
