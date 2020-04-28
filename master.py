@@ -12,7 +12,6 @@ class Master(node.Node):
     def __init__(self, ip = '', role = 'master'):
         super().__init__(ip, role)
         self.currentRID = 0
-        self.registry = {}
         self.replicaRoster = [config.REPLICA1_IP, config.REPLICA2_IP, config.REPLICA3_IP]
 
     def handle_message(self, cmds):
@@ -26,7 +25,7 @@ class Master(node.Node):
         if recv_ip not in self.replicaRoster :
             pass
             self.currentRID += 1
-            self.registry[self.currentRID] = cmds.ip
+            self.requests[self.currentRID] = cmds.ip
 
             #Message to send to replica
             toReplica = build_msg.build(self.ip, cmds.consis, cmds.request, 
@@ -51,8 +50,8 @@ class Master(node.Node):
                     toClient = build_msg.build(self.ip, cmds.consis, cmds.request,
                     cmds.ack, 'REQUEST FAILURE', self.l_clock, cmds.rID)
 
-                client = self.registry[cmds.rID]
-                del self.registry[cmds.rID]
+                client = self.requests[cmds.rID]
+                del self.requests[cmds.rID]
                 self.start_connections(client, toClient.SerializeToString())
 
     def run(self): # override from standard node
@@ -86,7 +85,11 @@ class Master(node.Node):
                         self.service_connection(key, mask)
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
-            self.node_log.write(str(self))
+            # log current and processed requests
+            self.node_log.write('outstanding requests:' + '\n' + str(self.requests)) 
+            self.node_log.write('processed requests:' + '\n' + str(self.processed_reqs)) 
+
+
             self.node_log.output_log()
         finally:
             self.sel.close()

@@ -60,7 +60,7 @@ class Replica(node.Node):
     def eventual(self, cmds):
         pass
         toMaster = msg_pb2.Message()
-        if cmds.rID in self.registry.keys() :
+        if cmds.rID in self.requests.keys() :
             # Do nothing if replica has already seen request
             pass
         else :
@@ -87,8 +87,8 @@ class Replica(node.Node):
                             cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
                             self.start_connections(ip, toReplica.SerializeToString())
 
-                    # Add the request to the registry
-                    self.registry[cmds.rID] = cmds.ip
+                    # Add the request to the requests dictionary
+                    self.requests[cmds.rID] = cmds.ip
                             
                 else :
                     toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
@@ -129,7 +129,8 @@ class Replica(node.Node):
                         self.service_connection(key, mask)
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
-            self.node_log.write(str(self))
+            self.node_log.write('outstanding requests:' + '\n' + str(self.requests)) 
+            self.node_log.write('processed requests:' + '\n' + str(self.processed_reqs)) 
             self.node_log.write("\nAll consistencies DB : " + str(self.allConsisDB))
             self.node_log.write("Linearized consistency DB : " + str(self.linearDB))
             self.node_log.write("Sequential consistency DB : " + str(self.sequentialDB))

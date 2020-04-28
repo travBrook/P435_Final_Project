@@ -20,6 +20,10 @@ class Node():
         self.data = ''
         self.l_clock = 0
 
+        # requests
+        self.requests = {} # (rID, [Message, timestamp recv, timestamp processed, total time elapsed])
+        self.processed_reqs = {} #(rID, [Message, timestamp recv, timestamp processed, total time elapsed])
+
         #socket stuffs
         self.sel = selectors.DefaultSelector()
         self.lsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -71,6 +75,7 @@ class Node():
                 cmds = msg_pb2.Message() 
                 try:
                     cmds.ParseFromString(recv_data)
+                    self.node_log.write('Inbound Msg:')
                     self.node_log.write(str(cmds))
                 except:
                     self.node_log.write("\nerror cmds: " + repr(cmds))
@@ -96,6 +101,9 @@ class Node():
         for i in range(0, 1):
             connid = i + 1
             self.node_log.write('starting connection' + str(connid) + 'to' + str(server_addr))
+            msg = msg_pb2.Message()
+            msg.ParseFromString(open_msg)
+            self.node_log.write('Outbound Msg:' + '\n' + str(msg))
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.setblocking(False)
             sock.connect_ex(server_addr)
@@ -121,7 +129,6 @@ class Node():
                         self.service_connection(key, mask)
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
-            self.node_log.write(str(self))
             self.node_log.output_log()
         finally:
             self.sel.close()
