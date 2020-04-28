@@ -25,11 +25,12 @@ class Master(node.Node):
         if recv_ip not in self.replicaRoster :
             pass
             self.currentRID += 1
-            self.requests[self.currentRID] = cmds.ip
+            # (rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
+            self.requests[self.currentRID] = (cmds, time.time(), 0, 0) 
 
             #Message to send to replica
             toReplica = build_msg.build(self.ip, cmds.consis, cmds.request, 
-            cmds.ack, cmds.data, cmds.l_Clock, self.currentRID)
+            cmds.ack, cmds.data, self.l_clock, self.currentRID)
 
             #TODO send to random? replica. 
 
@@ -50,8 +51,16 @@ class Master(node.Node):
                     toClient = build_msg.build(self.ip, cmds.consis, cmds.request,
                     cmds.ack, 'REQUEST FAILURE', self.l_clock, cmds.rID)
 
-                client = self.requests[cmds.rID]
-                del self.requests[cmds.rID]
+                client = self.requests[cmds.rID][0].ip
+                self.processed_reqs[cmds.rID] = self.requests.pop(cmds.rID)
+                # calculate current time stats
+                curr_req = self.processed_reqs[cmds.rID]
+                curr_time = time.time()
+                proc_time = curr_time - curr_req[1]
+                #update processed_reqs
+                self.processed_reqs[cmds.rID] = (curr_req[0], curr_req[1], curr_time, proc_time)
+
+
                 self.start_connections(client, toClient.SerializeToString())
 
     def run(self): # override from standard node
@@ -87,9 +96,12 @@ class Master(node.Node):
             print("caught keyboard interrupt, node exiting")
             # log current and processed requests
             self.node_log.write('Logical clock:' + str(self.l_clock)) 
-            self.node_log.write('outstanding requests:' + '\n' + str(self.requests)) 
-            self.node_log.write('processed requests:' + '\n' + str(self.processed_reqs)) 
-
+            self.node_log.write('outstanding requests:') 
+            for req in self.requests:
+                self.node_log.write('\n' + str(req) + ': ' + str(self.requests[req])) 
+            self.node_log.write('processed requests:' + '\n') 
+            for req in self.processed_reqs:
+                self.node_log.write('\n' + str(req) + ': ' + str(self.processed_reqs[req])) 
 
             self.node_log.output_log()
         finally:

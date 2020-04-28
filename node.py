@@ -21,8 +21,8 @@ class Node():
         self.l_clock = 0
 
         # requests
-        self.requests = {} # (rID, [Message, timestamp recv, timestamp processed, total time elapsed])
-        self.processed_reqs = {} #(rID, [Message, timestamp recv, timestamp processed, total time elapsed])
+        self.requests = {} # (rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
+        self.processed_reqs = {} #(rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
 
         #socket stuffs
         self.sel = selectors.DefaultSelector()
@@ -54,7 +54,7 @@ class Node():
     def accept_wrapper(self, sock):
         #increment Logical clock
         self.l_clock += 1
-        
+
         conn, addr = sock.accept()  # Should be ready to read
         self.connected_ip = addr[0] # store ip of machine we are connected to
         #self.node_log.write('accepted connection from' + str(addr))
