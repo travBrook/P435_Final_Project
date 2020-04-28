@@ -129,6 +129,7 @@ class Replica(node.Node):
                         self.service_connection(key, mask)
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
+            self.node_log.write('Logical clock:' + str(self.l_clock)) 
             self.node_log.write('outstanding requests:' + '\n' + str(self.requests)) 
             self.node_log.write('processed requests:' + '\n' + str(self.processed_reqs)) 
             self.node_log.write("\nAll consistencies DB : " + str(self.allConsisDB))

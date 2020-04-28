@@ -45,7 +45,7 @@ class Client(node.Node):
                         self.service_connection(key, mask)
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
-            self.node_log.write(str(self))
+            self.node_log.write('Logical clock:' + str(self.l_clock)) 
             self.node_log.output_log()
         finally:
             self.sel.close()

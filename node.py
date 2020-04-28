@@ -52,6 +52,9 @@ class Node():
     # *** SERVER Defs ***
 
     def accept_wrapper(self, sock):
+        #increment Logical clock
+        self.l_clock += 1
+        
         conn, addr = sock.accept()  # Should be ready to read
         self.connected_ip = addr[0] # store ip of machine we are connected to
         #self.node_log.write('accepted connection from' + str(addr))
@@ -84,8 +87,6 @@ class Node():
                 #TODO do stuff with commands (cmds)
                 self.handle_message(cmds)
 
-
-
             else:
                 self.node_log.write('closing connection to' + str(data.addr))
                 self.sel.unregister(sock)
@@ -97,6 +98,9 @@ class Node():
                 data.outb = data.outb[sent:]
 
     def start_connections(self, host, open_msg): # open_msg has to be in bytes
+        #increment Logical clock
+        self.l_clock += 1
+
         server_addr = (host, config.PORT)
         for i in range(0, 1):
             connid = i + 1

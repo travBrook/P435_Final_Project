@@ -86,6 +86,7 @@ class Master(node.Node):
         except KeyboardInterrupt:
             print("caught keyboard interrupt, node exiting")
             # log current and processed requests
+            self.node_log.write('Logical clock:' + str(self.l_clock)) 
             self.node_log.write('outstanding requests:' + '\n' + str(self.requests)) 
             self.node_log.write('processed requests:' + '\n' + str(self.processed_reqs)) 
 
