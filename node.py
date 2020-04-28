@@ -39,33 +39,8 @@ class Node():
         self.node_log.write('and now I sleep')
         self.node_log.output_log()
         os.kill(self.pid, 0)
-    
-    def transmit_data(self, ip, consis, request, ack, data): #data should be string
-        data_in =  data
-        self.node_log.write('\nsplit input data: \n' + str(data_in))
-        data_out = list()
-        tmp = ''
-        i = 0
-        for word in data_in:
-            tmp += str(word)
-            i += 1
-            if(i % config.item_max == 0): #different from master
-                data_out.append(tmp)
-                tmp = ''
-        data_out.append(tmp)
-        self.node_log.write('\nOutbound data: \n' + str(data_out))
-        print(str(data_out))
-        self.node_log.write('\nNum Chunks: \n' + str(len(data_out)))
-        for chunk in data_out:
-            outb_msg = msg_pb2.Message()
-            outb_msg = build_msg.build(ip, consis, request, ack, str(chunk), len(data_out))
-            self.start_connections(ip, config.PORT, 1, outb_msg.SerializeToString())
 
-        #TODO **** Update with new proto
-
-        return 1
-
-    # this method is meant to be overridden
+   # this method is meant to be overridden
     def handle_message(self, cmds):
         raise NotImplementedError('Error: Subclass has not implemented handle_message method')
 
