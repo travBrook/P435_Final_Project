@@ -5,7 +5,7 @@ import sys, subprocess, time
 import selectors
 
 #triples of (consis, request, Data)
-messages = [(4, 1, "key1 ::: value1"), (4, 2, "key1")]
+messages = []#(4, 1, "key1 ::: value1"), (4, 2, "key1")]
 
 class Client(node.Node):
 

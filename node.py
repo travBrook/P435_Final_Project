@@ -18,11 +18,14 @@ class Node():
         self.ip = ip
         self.role = role
         self.data = ''
-        self.l_clock = 0
+        self.l_clock = 1
 
         # requests
-        self.requests = {} # (rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
-        self.processed_reqs = {} #(rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
+        # structure
+        # Master requests/processed_reqs: (rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
+        # Replica requests/processed_reqs: (rID, [orig_Message, PriorityQueue msgQ()])
+        self.requests = {} 
+        self.processed_reqs = {} 
 
         #socket stuffs
         self.sel = selectors.DefaultSelector()

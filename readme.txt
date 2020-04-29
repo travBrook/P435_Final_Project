@@ -22,7 +22,7 @@
 *Run notes*
 - For testing, add your messages/requests to messages list and run normally
 - Sending messages:
-    > use start_connections(dest_ip, <Message>) to send messages to other processes
+    > use start_connections(dest_ip, <Message>.SerializeToString()) to send messages to other processes
     > Message object is a protobuffer, if you have issues working with them please contact Dexter or Travis
     > build_msg utility: we have a basic method to help build Message objects, example below
     > msg = build_msg.build(<sender_ip>, <consistency_model>, <request_type>, <acknowledgement>, <data>, <logical_clock_stamp>, <request_id>)
