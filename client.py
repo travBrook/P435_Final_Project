@@ -17,7 +17,7 @@ class Client(node.Node):
     def handle_message(self, cmds):
         #test message
         recv_ip = cmds.ip
-        print("Client has mail!")
+        print(self.role + " has mail!")
         #print(str(cmds))
 
 
