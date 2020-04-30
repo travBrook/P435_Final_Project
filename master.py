@@ -36,6 +36,7 @@ class Master(node.Node):
                 
                 #send to random? replica. 
                 self.start_connections(self.replicaRoster[random.randrange(0, len(self.replicaRoster))], toReplica.SerializeToString())
+                #time.sleep(0.5)
 
         ### Handle Replica message
         else : 

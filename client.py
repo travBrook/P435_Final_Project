@@ -29,9 +29,11 @@ class Client(node.Node):
         self.sel.register(self.lsock, selectors.EVENT_READ, data=None)
         
         for message in messages:
+            
             #self.l_clock += 1
             msg = build_msg.build(self.ip, message[0], message[1], 1, message[2], self.l_clock)
             self.start_connections(self.master_ip, msg.SerializeToString())
+            time.sleep(0.1)
 
         print('Client is running')
         
