@@ -149,10 +149,10 @@ class Replica(node.Node):
                 
                 if(cmds.consis == 1):
                     # add to linearPQ
-                    self.linearPQ.put((self.l_clock, cmds.rID))
+                    self.linearPQ.put((self.l_clock, cmds.rID, cmds))
                 else:
                     # add to seq
-                    self.seqPQ.put((self.l_clock, cmds.rID))
+                    self.seqPQ.put((self.l_clock, cmds.rID, cmds))
                 self.broadcast(outb)
                 return 0
 
@@ -163,37 +163,49 @@ class Replica(node.Node):
 
                 if(cmds.consis == 1):
                     # add to linearPQ
-                    self.linearPQ.put((cmds.l_Clock, cmds.rID))
+                    self.linearPQ.put((cmds.l_Clock, cmds.rID, cmds))
                 else:
                     # add to seq
-                    self.seqPQ.put((cmds.l_Clock, cmds.rID))
+                    self.seqPQ.put((cmds.l_Clock, cmds.rID, cmds))
         self.broadcast(cmds)
     
     #tob helper
     def broadcast(self,cmds):
+        #logging where we are with our requests
+        for req in self.requests:
+            if(isinstance(self.requests[req], PriorityQueue)):
+                self.node_log.write('\n' + str(req) + ': ' + str(self.requests[req].queue)) 
+            else:
+                self.node_log.write('\n' + str(req) + ': ' + str(self.requests[req])) 
+        self.node_log.write('processed requests:' + '\n') 
+        for req in self.processed_reqs:
+            if(isinstance(self.processed_reqs[req], PriorityQueue)):
+                self.node_log.write('\n' + str(req) + ': ' + str(self.processed_reqs[req].queue))
+            else: 
+                self.node_log.write('\n' + str(req) + ': ' + str(self.processed_reqs[req].queue)) 
+        
         # Check the queues if we have any broadcasting to do        
         # if linear
-        
-
         if(cmds.consis == 1):
             #prevent empty queue
             if(len(self.linearPQ.queue) == 0):
                 return 0
             rID = self.linearPQ.queue[0][1]
+            orig_msg = self.linearPQ.queue[0][2]
             msgQ = self.requests[rID]
             top_msg = msg_pb2.Message()
             outb = msg_pb2.Message()
-            self.node_log.write('\n' + 'message q: \n' + str(msgQ.queue))
+            #self.node_log.write('\n' + 'message q: \n' + str(msgQ.queue))
             for msg in msgQ.queue:
-                if(msg[1].ip == self.ip):
+                if(msg[1].ip == self.ip and len(msgQ.queue) < 3):
                     #we have already sent a message
                     return 0
             # are we the originator of the next queued broadcast
             if(len(msgQ.queue) == 0):
-                outb = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
+                outb = build_msg.build(self.ip, orig_msg.consis, orig_msg.request, 
+                1, orig_msg.data, self.linearPQ.queue[0][0], orig_msg.rID)
                 #update msgQ and requests
-                msgQ.put((cmds.l_Clock, outb))
+                msgQ.put((self.linearPQ.queue[0][0], outb))
                 self.requests[rID] = msgQ
                 # Broadcast to all
                 for ip in self.replicaRoster : 
@@ -204,9 +216,8 @@ class Replica(node.Node):
                 return 0
 
             top_msg = msgQ.queue[0][1]
-            self.node_log.write('\n' + 'Top msg: ' + str(top_msg))
             # all acks are in and we are originator
-            if(len(msgQ.queue) == len(self.replicaRoster) and top_msg.ip == self.ip):
+            if(len(msgQ.queue) == len(self.replicaRoster)):
                 #remove first element
                 self.linearPQ.get()
                 #if set perform operation
@@ -231,6 +242,7 @@ class Replica(node.Node):
                 #if we are originator send to master
                 if(top_msg.ip == self.ip):
                     self.start_connections(self.master_ip, outb.SerializeToString())
+
                 #move request to processed_reqs
                 self.processed_reqs[rID] = self.requests.pop(rID)
                 #call broadcast again to check if we need to do anything
@@ -249,24 +261,9 @@ class Replica(node.Node):
                             top_msg.ack, 'acknowledge ' + top_msg.data, self.l_clock, top_msg.rID)
                             #update msg queue and send ack
                             self.start_connections(ip, outb.SerializeToString())
-                        msgQ.put((self.l_clock, outb))
-                        self.requests[rID] = msgQ
-                        
-                elif(len(msgQ.queue) == 2):
-                    #perform operation and remove if we have all acks
-                    #remove first element
-                    self.linearPQ.get()
-                    if(top_msg.request == 1):
-                        newKV = top_msg.data.split(" ::: ")
-                        if(len(newKV) == 2):
-                            self.node_log.write('\n' + 'processing: ' + str(newKV) + '\n')
-                            self.allConsisDB[newKV[0]] = newKV[1]
-                            self.linearDB[newKV[0]] = newKV[1]
-                    #move request to processed_reqs
-                    self.processed_reqs[rID] = self.requests.pop(rID)
-                    #call broadcast again to check if we need to do anything
-                    self.broadcast(cmds)
-                    #dont care about gets
+                    msgQ.put((self.l_clock, outb))
+                    self.requests[rID] = msgQ
+
 
         else:
             #sequential
