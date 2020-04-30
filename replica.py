@@ -144,7 +144,7 @@ class Replica(node.Node):
             #update local requests dict
             if(cmds.ip == self.master_ip):
                 outb = build_msg.build(self.ip, cmds.consis, cmds.request, 1, cmds.data, self.l_clock, cmds.rID)
-                msgQ.put((self.l_clock, outb))
+                #msgQ.put((self.l_clock, outb))
                 self.requests[cmds.rID] = msgQ
                 
                 if(cmds.consis == 1):
@@ -153,7 +153,11 @@ class Replica(node.Node):
                 else:
                     # add to seq
                     self.seqPQ.put((self.l_clock, cmds.rID))
+                self.broadcast(outb)
+                return 0
+
             else:
+                # handle replica message
                 msgQ.put((cmds.l_Clock, cmds))
                 self.requests[cmds.rID] = msgQ
 
@@ -177,43 +181,63 @@ class Replica(node.Node):
                 return 0
             rID = self.linearPQ.queue[0][1]
             msgQ = self.requests[rID]
+            top_msg = msg_pb2.Message()
+            outb = msg_pb2.Message()
+            self.node_log.write('\n' + 'message q: \n' + str(msgQ.queue))
+            for msg in msgQ.queue:
+                if(msg[1].ip == self.ip):
+                    #we have already sent a message
+                    return 0
+            # are we the originator of the next queued broadcast
+            if(len(msgQ.queue) == 0):
+                outb = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                cmds.ack, cmds.data, cmds.l_Clock, cmds.rID)
+                #update msgQ and requests
+                msgQ.put((cmds.l_Clock, outb))
+                self.requests[rID] = msgQ
+                # Broadcast to all
+                for ip in self.replicaRoster : 
+                    if ip == self.ip :
+                        pass
+                    else: 
+                        self.start_connections(ip, outb.SerializeToString())
+                return 0
+
             top_msg = msgQ.queue[0][1]
-            # are we the originator of the next queued message
-            if(top_msg.ip == self.ip):
-                # all acks are in
-                if(len(msgQ.queue) == len(self.replicaRoster)):
-                    #remove first element
-                    self.linearPQ.get()
-                    #if set perform operation
-                    if(top_msg.request == 1):
-                        newKV = top_msg.data.split(" ::: ")
-                        if(len(newKV) == 2):
-                            self.allConsisDB[newKV[0]] = newKV[1]
-                            self.linearDB[newKV[0]] = newKV[1]
-                            outb = build_msg.build(self.ip, 1, 1, 1, 'Set successful', self.l_clock, rID)
-                        else:
-                            outb = build_msg.build(self.ip, 1, 1, 0, 'Set failure', self.l_clock, rID)
-                        
+            self.node_log.write('\n' + 'Top msg: ' + str(top_msg))
+            # all acks are in and we are originator
+            if(len(msgQ.queue) == len(self.replicaRoster) and top_msg.ip == self.ip):
+                #remove first element
+                self.linearPQ.get()
+                #if set perform operation
+                if(top_msg.request == 1):
+                    newKV = top_msg.data.split(" ::: ")
+                    if(len(newKV) == 2):
+                        self.node_log.write('\n' + 'processing: ' + str(newKV) + '\n')
+                        self.allConsisDB[newKV[0]] = newKV[1]
+                        self.linearDB[newKV[0]] = newKV[1]
+                        outb = build_msg.build(self.ip, 1, 1, 1, 'Set successful', self.l_clock, rID)
                     else:
-                        # perform get
-                        if (top_msg.data in self.linearDB):
-                            outb = build_msg.build(self.ip, top_msg.consis, top_msg.request, 
-                            1, self.linearDB[cmds.data], self.l_clock, top_msg.rID)
-                        else:
-                            outb = build_msg.build(self.ip, cmds.consis, cmds.request, 
-                            0, 'Get Failure', self.l_clock, top_msg.rID)
+                        outb = build_msg.build(self.ip, 1, 1, 0, 'Set failure', self.l_clock, rID)
+                        
+                else:
+                    # perform get
+                    if (top_msg.data in self.linearDB):
+                        outb = build_msg.build(self.ip, top_msg.consis, top_msg.request, 
+                        1, self.linearDB[top_msg.data], self.l_clock, top_msg.rID)
+                    else:
+                        outb = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        0, 'Get Failure', self.l_clock, top_msg.rID)
+                #if we are originator send to master
+                if(top_msg.ip == self.ip):
                     self.start_connections(self.master_ip, outb.SerializeToString())
-                    self.broadcast(cmds)
-                elif(len(msgQ.queue) == 1):
-                    # Broadcast to all
-                    for ip in self.replicaRoster : 
-                        if ip == self.ip :
-                            pass
-                        else : 
-                            outb = build_msg.build(self.ip, top_msg.consis, top_msg.request, 
-                            top_msg.ack, top_msg.data, top_msg.l_Clock, top_msg.rID)
-                            self.start_connections(ip, outb.SerializeToString())
+                #move request to processed_reqs
+                self.processed_reqs[rID] = self.requests.pop(rID)
+                #call broadcast again to check if we need to do anything
+                self.broadcast(cmds)
             else:
+
+                #These should all be requests that we are not originators on
                 #check if we need to broadcast ack
                 if(len(msgQ.queue) == 1):
                     # Broadcast to all
@@ -222,8 +246,12 @@ class Replica(node.Node):
                             pass
                         else : 
                             outb = build_msg.build(self.ip, top_msg.consis, top_msg.request, 
-                            top_msg.ack, top_msg.data, self.l_clock, top_msg.rID)
+                            top_msg.ack, 'acknowledge ' + top_msg.data, self.l_clock, top_msg.rID)
+                            #update msg queue and send ack
                             self.start_connections(ip, outb.SerializeToString())
+                        msgQ.put((self.l_clock, outb))
+                        self.requests[rID] = msgQ
+                        
                 elif(len(msgQ.queue) == 2):
                     #perform operation and remove if we have all acks
                     #remove first element
@@ -231,8 +259,12 @@ class Replica(node.Node):
                     if(top_msg.request == 1):
                         newKV = top_msg.data.split(" ::: ")
                         if(len(newKV) == 2):
+                            self.node_log.write('\n' + 'processing: ' + str(newKV) + '\n')
                             self.allConsisDB[newKV[0]] = newKV[1]
                             self.linearDB[newKV[0]] = newKV[1]
+                    #move request to processed_reqs
+                    self.processed_reqs[rID] = self.requests.pop(rID)
+                    #call broadcast again to check if we need to do anything
                     self.broadcast(cmds)
                     #dont care about gets
 
