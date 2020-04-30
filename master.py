@@ -4,7 +4,7 @@ import node
 import sys, subprocess, time
 import selectors
 import random
-
+import report
 
 
 class Master(node.Node):
@@ -105,8 +105,8 @@ class Master(node.Node):
             self.node_log.write('processed requests:' + '\n') 
             for req in self.processed_reqs:
                 self.node_log.write('\n' + str(req) + ': ' + str(self.processed_reqs[req])) 
-
             self.node_log.output_log()
+            rep = report.Report(self.processed_reqs)
         finally:
             self.sel.close()
 
