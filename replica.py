@@ -264,7 +264,7 @@ class Replica(node.Node):
                         #update msg queue and send ack
                         self.start_connections(ip, outb.SerializeToString())
                 clock = 0 
-                clock = self.l_clock
+                clock = self.l_clock + self.linearPQ.queue[0][0]
                 msgQ.put((clock, outb))
                 self.requests[rID] = msgQ
 

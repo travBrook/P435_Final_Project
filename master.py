@@ -56,20 +56,24 @@ class Master(node.Node):
                 try:
                     client = self.requests[cmds.rID][0].ip
                     self.processed_reqs[cmds.rID] = self.requests.pop(cmds.rID)
+                    
+                    # calculate current time stats
+                    curr_req = self.processed_reqs[cmds.rID]
+                    curr_time = time.time()
+                    proc_time = curr_time - curr_req[1]
+                    
+                    #update processed_reqs
+                    self.processed_reqs[cmds.rID] = (curr_req[0], curr_req[1], curr_time, proc_time)
+                    
+                    #finalize request by sending to client
+                    self.start_connections(client, toClient.SerializeToString())
+                    
                 except: 
                     print("an error occured with cmd : " + str(cmds))
 
                 
                
-                # calculate current time stats
-                curr_req = self.processed_reqs[cmds.rID]
-                curr_time = time.time()
-                proc_time = curr_time - curr_req[1]
-                #update processed_reqs
-                self.processed_reqs[cmds.rID] = (curr_req[0], curr_req[1], curr_time, proc_time)
 
-                #finalize request by sending to client
-                self.start_connections(client, toClient.SerializeToString())
 
     def run(self): # override from standard node
         self.lsock.bind((self.ip, config.PORT))
