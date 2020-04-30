@@ -18,7 +18,7 @@ class Node():
         self.ip = ip
         self.role = role
         self.data = ''
-        self.l_clock = 1
+        self.l_clock = 1 + float(self.ip[len(ip)-2:len(ip)])
 
         # requests
         # structure

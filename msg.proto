@@ -30,7 +30,7 @@ message Message {
 
   string data = 5;
 
-  int32 l_Clock = 7;
+  double l_Clock = 7;
 
   int32 rID = 8;
 
