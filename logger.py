@@ -8,7 +8,7 @@ import config
 
 
 class Logger():
-    contents = 'This is the first line of the log'
+    contents = '' #'This is the first line of the log'
 
     def __init__(self, filename = 'log.txt', pid = '', role = ''):
         self.filename = filename
