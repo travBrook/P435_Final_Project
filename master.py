@@ -53,8 +53,13 @@ class Master(node.Node):
                     toClient = build_msg.build(self.ip, cmds.consis, cmds.request,
                     cmds.ack, 'REQUEST FAILURE', self.l_clock, cmds.rID)
 
-                client = self.requests[cmds.rID][0].ip
-                self.processed_reqs[cmds.rID] = self.requests.pop(cmds.rID)
+                try:
+                    client = self.requests[cmds.rID][0].ip
+                    self.processed_reqs[cmds.rID] = self.requests.pop(cmds.rID)
+                except: 
+                    print("an error occured with cmd : " + str(cmds))
+
+                
                
                 # calculate current time stats
                 curr_req = self.processed_reqs[cmds.rID]

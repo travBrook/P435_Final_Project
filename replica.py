@@ -298,6 +298,7 @@ class Replica(node.Node):
         self.node_log.write(str(msg))
         self.start_connections(self.master_ip, msg.SerializeToString())
         print('im running!')
+        #print('my l clock is : ' + str(self.l_clock))
         try:
             while True:
                 events = self.sel.select(timeout=None)

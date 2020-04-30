@@ -18,8 +18,7 @@ class Node():
         self.ip = ip
         self.role = role
         self.data = ''
-        self.l_clock = 1 + float(self.ip[len(ip)-2:len(ip)])
-
+        self.l_clock = float(self.ip[len(ip)-2:len(ip)])/100
         # requests
         # structure
         # Master requests/processed_reqs: (rID, [orig_Message, timestamp recv, timestamp processed, total time elapsed])
