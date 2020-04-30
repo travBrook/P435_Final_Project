@@ -13,8 +13,12 @@ def run():
 
     #Spawn Client
     proc_id = subprocess.Popen([sys.executable, './client.py', config.CLIENT1_IP, config.MASTER_IP,'Client1', '1, 1, key2 ::: value2', '1, 2, key1'])
+    time.sleep(0.13)
     proc_id = subprocess.Popen([sys.executable, './client.py', config.CLIENT2_IP, config.MASTER_IP,'Client2',  '1, 1, key1 ::: value?!', '1, 2, key1', '1, 1, key1 ::: overwrite1', '1, 1, key3 ::: value1'])
-
+    time.sleep(0.13)
+    proc_id = subprocess.Popen([sys.executable, './client.py', config.CLIENT3_IP, config.MASTER_IP,'Client3',  '4, 1, key1 ::: value?!', '1, 2, key1', '1, 1, key1 ::: overwrite1', '1, 1, key3 ::: value1'])
+    time.sleep(0.13)
+    proc_id = subprocess.Popen([sys.executable, './client.py', config.CLIENT4_IP, config.MASTER_IP,'Client4',  '4, 1, key1 ::: value?!', '1, 2, key1', '1, 1, key1 ::: overwrite1', '1, 1, key3 ::: value1'])
 
     # keep running to listen for kill command
     try:

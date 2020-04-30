@@ -3,10 +3,12 @@
 
 #default paths
 log_path = './log/'
-
+input_path = './input/'
 # Network CONSTANTS:
-CLIENT1_IP = '127.0.0.1' # + sid will be the assigned ip
+CLIENT1_IP = '127.0.0.1'
 CLIENT2_IP = '127.0.0.2'
+CLIENT3_IP = '127.0.0.3' 
+CLIENT4_IP = '127.0.0.4'
 MASTER_IP = '127.0.0.11'
 REPLICA1_IP = '127.0.0.21'
 REPLICA2_IP = '127.0.0.22'

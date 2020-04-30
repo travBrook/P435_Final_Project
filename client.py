@@ -56,20 +56,23 @@ class Client(node.Node):
 ### TODO add acceptance of additional args to accept user input of messages
 if(len(sys.argv) >= 4):
     test = Client(sys.argv[1], sys.argv[2], sys.argv[3])
-
-    for i in range(4, len(sys.argv)):
-        try :
-            pass
-            msg = sys.argv[i] 
-            msgList = msg.split(", ")
-            if len(msgList) == 3 : 
-                newMsg = (int(msgList[0]), int(msgList[1]), msgList[2])
-                messages.append(newMsg)
-            else : 
-                raise Exception                
-        except : 
-            pass
-            print("Incorrect format for message : " + sys.argv[i])
+    try:
+        f = open(config.input_path + sys.argv[4], 'r')
+        
+    except:
+        for i in range(4, len(sys.argv)):
+            try :
+                pass
+                msg = sys.argv[i] 
+                msgList = msg.split(", ")
+                if len(msgList) == 3 : 
+                    newMsg = (int(msgList[0]), int(msgList[1]), msgList[2])
+                    messages.append(newMsg)
+                else : 
+                    raise Exception                
+            except : 
+                pass
+                print("Incorrect format for message : " + sys.argv[i])
 
     test.run()
 else:
