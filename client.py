@@ -17,7 +17,7 @@ class Client(node.Node):
     def handle_message(self, cmds):
         #test message
         recv_ip = cmds.ip
-        print("Client has mail!")
+        print(self.role + " has mail!")
         #print(str(cmds))
 
 
@@ -33,7 +33,7 @@ class Client(node.Node):
             #self.l_clock += 1
             msg = build_msg.build(self.ip, message[0], message[1], 1, message[2], self.l_clock)
             self.start_connections(self.master_ip, msg.SerializeToString())
-            time.sleep(0.1)
+            #time.sleep(0.1)
 
         print('Client is running')
         

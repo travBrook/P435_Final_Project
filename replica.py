@@ -324,6 +324,8 @@ class Replica(node.Node):
                 else: 
                     self.node_log.write('\n' + str(req) + ': ' + str(self.processed_reqs[req].queue)) 
 
+            self.node_log.write("\nLinearPQ: " + str(self.linearPQ.queue))
+            self.node_log.write("\nLinearPQ: " + str(self.seqPQ.queue))
             self.node_log.write("\nAll consistencies DB : " + str(self.allConsisDB))
             self.node_log.write("Linearized consistency DB : " + str(self.linearDB))
             self.node_log.write("Sequential consistency DB : " + str(self.sequentialDB))
