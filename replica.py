@@ -14,19 +14,17 @@ class Replica(node.Node):
         self.master_ip = master_ip
         self.replicaRoster = [config.REPLICA1_IP, config.REPLICA2_IP, config.REPLICA3_IP]
 
-        self.linearPQ = PriorityQueue() # (original_l_clock, rID)
-        self.seqPQ = PriorityQueue() # (original_l_clock, rID)
-
-
         # merged database.. should be wild
         self.allConsisDB = {}
 
         # *** Linearized Consistency Attributes ***
         # TODO
         self.linearDB = {}
+        self.linearPQ = PriorityQueue() # (original_l_clock, rID, message)
         # *** Sequential Consistency Attributes ***
         # TODO
         self.sequentialDB = {}        
+        self.seqPQ = PriorityQueue() # (original_l_clock, rID, message)
         # *** Causal Consistency Attributes ***
         # TODO
         self.causalDB = {}
@@ -117,13 +115,9 @@ class Replica(node.Node):
         return 0
 
     def sequential(self, cmds):
-        if(cmds.request == 1):
-            self.tob(cmds)
-        else:
-            #TODO local get
-            pass
-
+        self.tob(cmds)
         return 0
+            
 
     #totally ordered broadcast yo
     def tob(self, cmds):
@@ -190,7 +184,7 @@ class Replica(node.Node):
         if(cmds.consis == 1):
             #prevent empty queue
             if(len(self.linearPQ.queue) == 0):
-                self.node_log.write('** Queue is Empty ****!!!!')
+                self.node_log.write('**Lin Queue is Empty ****!!!!')
                 return 0
             rID = self.linearPQ.queue[0][1]
             orig_msg = self.linearPQ.queue[0][2]
@@ -270,20 +264,98 @@ class Replica(node.Node):
 
 
         else:
-            #sequential
-            pass
 
+            #sequential tob
+            if(len(self.seqPQ.queue) == 0):
+                self.node_log.write('**Seq Queue is Empty ****!!!!')
+                return 0
 
+            rID = self.seqPQ.queue[0][1]
+            orig_msg = self.seqPQ.queue[0][2]
+            msgQ = self.requests[rID]
+            top_msg = msg_pb2.Message()
+            outb = msg_pb2.Message()
+            
+            if(orig_msg.request == 2):
+                #If the next message in the queue is a get, just do it
+                if (top_msg.data in self.sequentialDB):
+                        outb = build_msg.build(self.ip, orig_msg.consis, orig_msg.request, 
+                        1, self.sequentialDB[orig_msg.data], self.l_clock, orig_msg.rID)
+                else:
+                        outb = build_msg.build(self.ip, orig_msg.consis, orig_msg.request, 
+                        0, 'Get Failure', self.l_clock, orig_msg.rID)
+                
+                #Remove from queue, send to master, then broadcast again
+                fillQueue = PriorityQueue()
+                fillQueue.put((rID, orig_msg))
+                self.seqPQ.get()
+                self.processed_reqs[rID] = fillQueue
+                self.start_connections(self.master_ip, outb.SerializeToString())
+                self.broadcast(cmds)
 
+            else : 
 
+                #self.node_log.write('\n' + 'message q: \n' + str(msgQ.queue))
+                for msg in msgQ.queue:
+                    if(msg[1].ip == self.ip and len(msgQ.queue) < 3):
+                        #we have already sent a message
+                        return 0
+                # are we the originator of the next queued broadcast
+                if(len(msgQ.queue) == 0):
+                    outb = build_msg.build(self.ip, orig_msg.consis, orig_msg.request, 
+                    1, orig_msg.data, self.seqPQ.queue[0][0], orig_msg.rID)
+                    #update msgQ and requests
+                    msgQ.put((self.seqPQ.queue[0][0], outb))
+                    self.requests[rID] = msgQ
+                    # Broadcast to all
+                    for ip in self.replicaRoster : 
+                        if ip == self.ip :
+                            pass
+                        else: 
+                            self.start_connections(ip, outb.SerializeToString())
+                    return 0
 
-        # checks if I am the originator
-#        if(self.requests[cmds.rID].queue[0][1].ip == self.ip):
-            # and we haven't received any acks
- #           if(len(self.requests[cmds.rID])) == 1):
-                #broadcast
+                top_msg = msgQ.queue[0][1]
+                # all acks are in and we are originator
+                if(len(msgQ.queue) == len(self.replicaRoster)):
+                    #remove first element
+                    self.seqPQ.get()
+                    #if set perform operation
+                    newKV = top_msg.data.split(" ::: ")
+                    if(len(newKV) == 2):
+                        self.node_log.write('\n' + 'processing: ' + str(newKV) + '\n')
+                        self.allConsisDB[newKV[0]] = newKV[1]
+                        self.sequentialDB[newKV[0]] = newKV[1]
+                        outb = build_msg.build(self.ip, 1, 1, 1, 'Set successful', self.l_clock, rID)
+                    else:
+                        outb = build_msg.build(self.ip, 1, 1, 0, 'Set failure', self.l_clock, rID)
+                            
+                    #if we are originator send to master
+                    if(top_msg.ip == self.ip):
+                        self.start_connections(self.master_ip, outb.SerializeToString())
 
+                    #move request to processed_reqs
+                    self.processed_reqs[rID] = self.requests.pop(rID)
+                    #call broadcast again to check if we need to do anything
+                    self.broadcast(cmds)
+                else:
 
+                    #These should all be requests that we are not originators on
+                    #check if we need to broadcast ack
+                    #if(len(msgQ.queue) == 1):
+                    # Broadcast to all
+                    for ip in self.replicaRoster : 
+                        if ip == self.ip :
+                            pass
+                        else : 
+                            outb = build_msg.build(self.ip, top_msg.consis, top_msg.request, 
+                            top_msg.ack, 'acknowledge ' + top_msg.data, self.l_clock, top_msg.rID)
+                            #update msg queue and send ack
+                            self.start_connections(ip, outb.SerializeToString())
+                    clock = 0 
+                    clock = self.l_clock + self.seqPQ.queue[0][0]
+                    msgQ.put((clock, outb))
+                    self.requests[rID] = msgQ
 
 
     def run(self): #override node run method
