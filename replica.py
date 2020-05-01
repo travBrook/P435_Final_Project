@@ -262,6 +262,7 @@ class Replica(node.Node):
                 clock = self.l_clock + self.linearPQ.queue[0][0]
                 msgQ.put((clock, outb))
                 self.requests[rID] = msgQ
+                self.broadcast(cmds)
 
 
         else:
@@ -290,6 +291,7 @@ class Replica(node.Node):
                 fillQueue = PriorityQueue()
                 fillQueue.put((rID, orig_msg))
                 self.seqPQ.get()
+                self.requests.pop(rID) # remove from requests registry
                 self.processed_reqs[rID] = fillQueue
                 self.start_connections(self.master_ip, outb.SerializeToString())
                 self.broadcast(cmds)
@@ -358,6 +360,7 @@ class Replica(node.Node):
                     clock = self.l_clock + self.seqPQ.queue[0][0]
                     msgQ.put((clock, outb))
                     self.requests[rID] = msgQ
+                    self.broadcast(cmds)
 
 
     def run(self): #override node run method
