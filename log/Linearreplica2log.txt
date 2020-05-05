@@ -1,0 +1,1333 @@
+
+Im Alive 
+
+listening on('127.0.0.22', 65432)
+
+ Data outbound: 
+
+ip: "127.0.0.22"
+data: "hey there Im up"
+l_Clock: 0.22
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+data: "hey there Im up"
+l_Clock: 0.22
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 14.11
+rID: 3
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 5.22
+rID: 3
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 5.22
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 13.11
+rID: 2
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 19.11
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 12.11
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 20.11
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 22.11
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 4.21
+rID: 6
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 10.219999999999999
+rID: 6
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 11.219999999999999
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 3.23
+rID: 7
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 13.219999999999999
+rID: 7
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 14.219999999999999
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 26.11
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 7.21
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 28.11
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 32.11
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 18.23
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 16.23
+rID: 6
+
+
+processing: ['key2', 'second']
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 14.21
+rID: 3
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "second"
+l_Clock: 23.22
+rID: 3
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 7.22
+rID: 2
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 7.22
+rID: 2
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 6.21
+rID: 4
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 26.22
+rID: 4
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 27.22
+rID: 4
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 6.23
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 25.23
+rID: 4
+
+
+processing: ['key1', 'firstOW']
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 30.22
+rID: 5
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 31.22
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 23.21
+rID: 5
+
+
+processing: ['key1', 'first']
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 26.21
+rID: 2
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 32.230000000000004
+rID: 2
+
+
+processing: ['key1', 'firstOOW']
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 35.22
+rID: 2
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 7.22
+rID: 8
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 7.22
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 8.23
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 38.230000000000004
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 31.21
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 33.21
+rID: 8
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+data: "Get Failure"
+l_Clock: 42.22
+rID: 8
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.219999999999999
+rID: 1
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.219999999999999
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 37.21
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 43.230000000000004
+rID: 1
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "firstOOW"
+l_Clock: 47.22
+rID: 1
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 8.219999999999999
+rID: 9
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 8.219999999999999
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 41.21
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 47.230000000000004
+rID: 9
+
+
+processing: ['key3', 'third']
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 52.22
+rID: 9
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 53.22
+rID: 11
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 54.22
+rID: 11
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 9.219999999999999
+rID: 10
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 9.219999999999999
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 46.21
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 11.23
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 55.230000000000004
+rID: 10
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "firstOOW"
+l_Clock: 60.22
+rID: 10
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 61.22
+rID: 14
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 62.22
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 50.21
+rID: 14
+
+
+processing: ['key1', 'first']
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 16.22
+rID: 12
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 16.22
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 19.23
+rID: 16
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 55.21
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 64.23
+rID: 12
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "second"
+l_Clock: 69.22
+rID: 12
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 19.22
+rID: 13
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 19.22
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 58.21
+rID: 16
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 61.21
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 70.23
+rID: 13
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "first"
+l_Clock: 75.22
+rID: 13
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 19.22
+rID: 15
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 19.22
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 65.21000000000001
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 73.23
+rID: 15
+
+
+processing: ['key2', 'second']
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 80.22
+rID: 15
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 81.22
+rID: 16
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 82.22
+rID: 16
+
+
+processing: ['key3', 'third']
+
+**Lin Queue is Empty ****!!!!
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 20.23
+rID: 17
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 84.22
+rID: 17
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 85.22
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 70.21000000000001
+rID: 17
+
+
+processing: ['key1', 'firstOW']
+
+**Lin Queue is Empty ****!!!!
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 20.23
+rID: 18
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 88.22
+rID: 18
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 89.22
+rID: 18
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 74.21000000000001
+rID: 18
+
+
+processing: ['key1', 'firstOOW']
+
+**Lin Queue is Empty ****!!!!
+Logical clock:91.22
+Outstanding requests:
+
+processed requests:
+
+
+7: [(3.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 3.23
+rID: 7
+), (18.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 14.219999999999999
+rID: 7
+), (10.44, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 7.21
+rID: 7
+)]
+
+6: [(4.21, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 4.21
+rID: 6
+), (16.43, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 11.219999999999999
+rID: 6
+), (20.44, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 16.23
+rID: 6
+)]
+
+3: [(5.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 5.22
+rID: 3
+), (23.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 18.23
+rID: 3
+), (19.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 14.21
+rID: 3
+)]
+
+4: [(6.21, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 6.21
+rID: 4
+), (34.43, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 27.22
+rID: 4
+), (31.44, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 25.23
+rID: 4
+)]
+
+5: [(6.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 6.23
+rID: 5
+), (38.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 31.22
+rID: 5
+), (29.44, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 23.21
+rID: 5
+)]
+
+2: [(7.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 7.22
+rID: 2
+), (33.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 26.21
+rID: 2
+), (39.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 32.230000000000004
+rID: 2
+)]
+
+8: [(7.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 7.22
+rID: 8
+), (45.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 38.230000000000004
+rID: 8
+), (40.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 33.21
+rID: 8
+)]
+
+1: [(8.219999999999999, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.219999999999999
+rID: 1
+), (45.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 37.21
+rID: 1
+), (51.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 43.230000000000004
+rID: 1
+)]
+
+9: [(8.219999999999999, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 8.219999999999999
+rID: 9
+), (49.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 41.21
+rID: 9
+), (55.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 47.230000000000004
+rID: 9
+)]
+
+11: [(8.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 8.23
+rID: 11
+), (39.44, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 31.21
+rID: 11
+), (63.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key3"
+l_Clock: 54.22
+rID: 11
+)]
+
+10: [(9.219999999999999, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 9.219999999999999
+rID: 10
+), (55.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 46.21
+rID: 10
+), (64.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 55.230000000000004
+rID: 10
+)]
+
+14: [(11.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 11.23
+rID: 14
+), (74.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 62.22
+rID: 14
+), (61.44, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: first"
+l_Clock: 50.21
+rID: 14
+)]
+
+12: [(16.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 16.22
+rID: 12
+), (71.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 55.21
+rID: 12
+), (80.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key2"
+l_Clock: 64.23
+rID: 12
+)]
+
+13: [(19.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 19.22
+rID: 13
+), (80.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 61.21
+rID: 13
+), (89.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: GET
+ack: OK
+data: "acknowledge key1"
+l_Clock: 70.23
+rID: 13
+)]
+
+15: [(19.22, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 19.22
+rID: 15
+), (84.43, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 65.21000000000001
+rID: 15
+), (92.45, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key2 ::: second"
+l_Clock: 73.23
+rID: 15
+)]
+
+16: [(19.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 19.23
+rID: 16
+), (77.44, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 58.21
+rID: 16
+), (102.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key3 ::: third"
+l_Clock: 82.22
+rID: 16
+)]
+
+17: [(20.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 20.23
+rID: 17
+), (106.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 85.22
+rID: 17
+), (90.44000000000001, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOW"
+l_Clock: 70.21000000000001
+rID: 17
+)]
+
+18: [(20.23, ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 20.23
+rID: 18
+), (110.45, ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 89.22
+rID: 18
+), (94.44000000000001, ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "acknowledge key1 ::: firstOOW"
+l_Clock: 74.21000000000001
+rID: 18
+)]
+
+LinearPQ: []
+
+SeqPQ: []
+
+All consistencies DB : {'key2': 'second', 'key1': 'firstOOW', 'key3': 'third'}
+Linearized consistency DB : {'key2': 'second', 'key1': 'firstOOW', 'key3': 'third'}
+Sequential consistency DB : {}
+Causal consistency DB : {}
+Eventual consistency DB : {}

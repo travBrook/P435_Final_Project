@@ -1,0 +1,567 @@
+
+Im Alive 
+
+listening on('127.0.0.21', 65432)
+
+ Data outbound: 
+
+ip: "127.0.0.21"
+data: "hey there Im up"
+l_Clock: 0.21
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+data: "hey there Im up"
+l_Clock: 0.21
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 19.11
+rID: 8
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: GET
+data: "Get Failure"
+l_Clock: 8.21
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 22.11
+rID: 10
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: GET
+data: "Get Failure"
+l_Clock: 9.21
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 12.11
+rID: 1
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 12.11
+rID: 1
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 12.11
+rID: 1
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 17.11
+rID: 6
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 17.11
+rID: 6
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 17.11
+rID: 6
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 24.11
+rID: 11
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: GET
+data: "Get Failure"
+l_Clock: 18.21
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 26.11
+rID: 12
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: GET
+ack: OK
+data: "second"
+l_Clock: 20.21
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 15.11
+rID: 4
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 15.11
+rID: 4
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 15.11
+rID: 4
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 21.11
+rID: 9
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 21.11
+rID: 9
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 21.11
+rID: 9
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 12.11
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 17.11
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 14.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 21.11
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 15.11
+rID: 4
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 34.11
+rID: 16
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 34.11
+rID: 16
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 34.11
+rID: 16
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 30.11
+rID: 14
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 30.11
+rID: 14
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 30.11
+rID: 14
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 32.11
+rID: 15
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 32.11
+rID: 15
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 32.11
+rID: 15
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 30.11
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 18
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 18
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.21"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 18
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 32.11
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 34.11
+rID: 16
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: EVENTUAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 18
+
+Logical clock:61.21
+Outstanding requests:
+
+
+3: 127.0.0.11
+
+1: 127.0.0.23
+
+6: 127.0.0.22
+
+4: 127.0.0.22
+
+9: 127.0.0.23
+
+17: 127.0.0.11
+
+16: 127.0.0.22
+
+14: 127.0.0.23
+
+15: 127.0.0.23
+
+18: 127.0.0.23
+processed requests:
+
+
+LinearPQ: []
+
+SeqPQ: []
+
+All consistencies DB : {'key2': 'second', 'key1': 'firstOOW', 'key3': 'third'}
+Linearized consistency DB : {}
+Sequential consistency DB : {}
+Causal consistency DB : {}
+Eventual consistency DB : {'key2': 'second', 'key1': 'firstOOW', 'key3': 'third'}

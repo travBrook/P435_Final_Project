@@ -1,0 +1,167 @@
+
+Im Alive 
+
+listening on('127.0.0.1', 65432)
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 0.001
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 1.001
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 2.001
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 3.001
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 4.0009999999999994
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 5.0009999999999994
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 6.0009999999999994
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 7.0009999999999994
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.1"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.001
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 32.11
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 40.11
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 36.11
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 24.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 59.11
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "firstOW"
+l_Clock: 50.11
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "second"
+l_Clock: 67.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "firstOOW"
+l_Clock: 69.11
+rID: 18
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "third"
+l_Clock: 55.11
+rID: 12
+
+Logical clock:18.000999999999998

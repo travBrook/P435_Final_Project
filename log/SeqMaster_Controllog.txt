@@ -1,0 +1,823 @@
+
+Im Alive 
+
+listening on('127.0.0.11', 65432)
+
+replica1 spawned
+
+replica2 spawned
+
+replica3 spawned
+Inbound Msg:
+ip: "127.0.0.21"
+data: "hey there Im up"
+l_Clock: 0.21
+
+Inbound Msg:
+ip: "127.0.0.23"
+data: "hey there Im up"
+l_Clock: 0.23
+
+Inbound Msg:
+ip: "127.0.0.22"
+data: "hey there Im up"
+l_Clock: 0.22
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 0.008
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 21.11
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 2.008
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 22.11
+rID: 2
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 2.003
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 23.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 1.008
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 24.11
+rID: 4
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 4.003
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 25.11
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 3.003
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 26.11
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 0.003
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 27.11
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 1.003
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 28.11
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 5.003
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 29.11
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 4.008
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 30.11
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 6.003
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 31.11
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 6.008
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 32.11
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 5.008
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 33.11
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 7.008
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 34.11
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 3.008
+
+starting connection1to('127.0.0.23', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 35.11
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 7.003
+
+starting connection1to('127.0.0.21', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 36.11
+rID: 16
+
+Inbound Msg:
+ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.008
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 37.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 8.003
+
+starting connection1to('127.0.0.22', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 18
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 7.23
+rID: 1
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 40.11
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 14.219999999999999
+rID: 2
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 42.11
+rID: 2
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 15.21
+rID: 8
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 45.11
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 14.21
+rID: 13
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 46.11
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 20.23
+rID: 5
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 48.11
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 25.21
+rID: 16
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 51.11
+rID: 16
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 26.21
+rID: 3
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 52.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 29.23
+rID: 11
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 54.11
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.23"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 35.230000000000004
+rID: 15
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 56.11
+rID: 15
+
+Inbound Msg:
+ip: "127.0.0.21"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 40.21
+rID: 10
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 58.11
+rID: 10
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 43.22
+rID: 4
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 61.11
+rID: 4
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 44.22
+rID: 7
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 62.11
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 49.22
+rID: 9
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 64.11
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 54.22
+rID: 18
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: LINEARIZED
+request: SET
+ack: OK
+data: "Set successful"
+l_Clock: 70.11
+rID: 18
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 55.22
+rID: 6
+
+starting connection1to('127.0.0.3', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 71.11
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 56.22
+rID: 12
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 72.11
+rID: 12
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 57.22
+rID: 14
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 73.11
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.22"
+consis: SEQUENTIAL
+request: GET
+data: "Get Failure"
+l_Clock: 58.22
+rID: 17
+
+starting connection1to('127.0.0.8', 65432)
+Outbound Msg:
+ip: "127.0.0.11"
+consis: SEQUENTIAL
+request: GET
+data: "REQUEST FAILURE"
+l_Clock: 74.11
+rID: 17
+
+Logical clock:75.11
+outstanding requests:
+processed requests:
+
+
+1: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 0.008
+, 1588641646.2173953, 1588641646.2383387, 0.020943403244018555)
+
+2: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 2.008
+, 1588641646.226373, 1588641646.2393367, 0.01296377182006836)
+
+8: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 1.003
+, 1588641646.2303605, 1588641646.240334, 0.009973526000976562)
+
+13: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 5.008
+, 1588641646.2353485, 1588641646.2413332, 0.005984783172607422)
+
+5: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 4.003
+, 1588641646.2283661, 1588641646.2443237, 0.01595759391784668)
+
+16: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 7.003
+, 1588641646.236345, 1588641646.2463183, 0.009973287582397461)
+
+3: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 2.003
+, 1588641646.227369, 1588641646.2473156, 0.019946575164794922)
+
+11: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 6.003
+, 1588641646.233353, 1588641646.2503073, 0.016954421997070312)
+
+15: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 3.008
+, 1588641646.236345, 1588641646.2552955, 0.018950462341308594)
+
+10: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 4.008
+, 1588641646.2313578, 1588641646.2572887, 0.02593088150024414)
+
+4: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 1.008
+, 1588641646.2283661, 1588641646.2592833, 0.03091716766357422)
+
+7: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 0.003
+, 1588641646.2303605, 1588641646.2592833, 0.02892279624938965)
+
+9: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 5.003
+, 1588641646.2313578, 1588641646.2632735, 0.03191566467285156)
+
+18: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 8.003
+, 1588641646.2373414, 1588641646.2672625, 0.02992105484008789)
+
+6: (ip: "127.0.0.3"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 3.003
+, 1588641646.2293637, 1588641646.2682598, 0.03889608383178711)
+
+12: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key3"
+l_Clock: 6.008
+, 1588641646.2353485, 1588641646.2682598, 0.03291130065917969)
+
+14: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 7.008
+, 1588641646.2353485, 1588641646.2692573, 0.033908843994140625)
+
+17: (ip: "127.0.0.8"
+consis: SEQUENTIAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 8.008
+, 1588641646.2373414, 1588641646.2702546, 0.0329132080078125)

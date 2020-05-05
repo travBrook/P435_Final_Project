@@ -1,0 +1,278 @@
+
+Im Alive 
+
+listening on('127.0.0.22', 65432)
+
+ Data outbound: 
+
+ip: "127.0.0.22"
+data: "hey there Im up"
+l_Clock: 0.22
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+data: "hey there Im up"
+l_Clock: 0.22
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 19.11
+rID: 1
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: GET
+data: "Try get request later"
+l_Clock: 19.11
+rID: 1
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 52.11
+rID: 11
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 52.11
+rID: 11
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 26.11
+rID: 4
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 26.11
+rID: 4
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 30.11
+rID: 5
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOW"
+l_Clock: 30.11
+rID: 5
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 47.11
+rID: 9
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 47.11
+rID: 9
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 43.11
+rID: 8
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 43.11
+rID: 8
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 57.11
+rID: 13
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: first"
+l_Clock: 57.11
+rID: 13
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 61.11
+rID: 14
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 61.11
+rID: 14
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 7
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key1 ::: firstOOW"
+l_Clock: 38.11
+rID: 7
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 34.11
+rID: 6
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key2 ::: second"
+l_Clock: 34.11
+rID: 6
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 22.11
+rID: 3
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: SET
+ack: OK
+data: "key3 ::: third"
+l_Clock: 22.11
+rID: 3
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key2"
+l_Clock: 67.11
+rID: 17
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "second"
+l_Clock: 67.11
+rID: 17
+
+Inbound Msg:
+ip: "127.0.0.11"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "key1"
+l_Clock: 69.11
+rID: 18
+
+starting connection1to('127.0.0.11', 65432)
+Outbound Msg:
+ip: "127.0.0.22"
+consis: CAUSAL
+request: GET
+ack: OK
+data: "firstOOW"
+l_Clock: 69.11
+rID: 18
+
+Logical clock:27.22
+Outstanding requests:
+
+processed requests:
+
+
+LinearPQ: []
+
+SeqPQ: []
+
+All consistencies DB : {}
+Linearized consistency DB : {}
+Sequential consistency DB : {}
+Causal consistency DB : {'key1': 'firstOOW', 'key3': 'third', 'key2': 'second'}
+Eventual consistency DB : {}
