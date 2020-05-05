@@ -1,3 +1,4 @@
+    
 import config
 import msg_pb2, build_msg
 import node
@@ -13,7 +14,7 @@ class Replica(node.Node):
         super().__init__(ip, role)
         self.master_ip = master_ip
         self.replicaRoster = [config.REPLICA1_IP, config.REPLICA2_IP, config.REPLICA3_IP]
-
+        self.max_write = 0
         # merged database.. should be wild
         self.allConsisDB = {}
 
@@ -28,6 +29,7 @@ class Replica(node.Node):
         # *** Causal Consistency Attributes ***
         # TODO
         self.causalDB = {}
+        self.writeTimestamp = 0
         # *** Eventual Consistency Attributes ***
         # TODO but might not be necessary
         self.eventualDB = {}
@@ -46,7 +48,7 @@ class Replica(node.Node):
         elif(consistency == 3):
             # *** Causal Consistency Requests ***
             # TODO
-            pass
+            self.causal(cmds)
         elif(consistency == 4):
             # *** Eventual Consistency Requests ***
             # TODO
@@ -57,6 +59,27 @@ class Replica(node.Node):
             pass
             self.eventual(cmds)
 
+    def causal(self,cmds):
+        if cmds.request == 1: # write request coming from primary/master
+            newKV = cmds.data.split(" ::: ")
+            if len(newKV) == 2 :
+                self.causalDB[newKV[0]] = newKV[1]
+                self.writeTimestamp = max(self.writeTimestamp, cmds.l_Clock)
+                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        1, cmds.data, cmds.l_Clock, cmds.rID)
+                self.start_connections(self.master_ip, toMaster.SerializeToString()) # not even sure master needs to see this
+        elif cmds.request == 2: # read request coming from causalClient
+            if self.writeTimestamp > cmds.ma_Timestamp: # if we have seen the relevant write, we can reply
+                if cmds.data in self.causalDB:
+                     toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        1, self.causalDB[cmds.data], cmds.l_Clock, cmds.rID)
+                else:
+                    toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        0, 'Key not found', cmds.l_Clock, cmds.rID)
+            else: # returning something here would break causal consistency
+                toMaster = build_msg.build(self.ip, cmds.consis, cmds.request, 
+                        0, 'Try get request later', cmds.l_Clock, cmds.rID)
+            self.start_connections(self.master_ip, toMaster.SerializeToString())
 
     ### No consistency maintained...? Or is this eventual... 
     #   TODO send set request to other replicas
