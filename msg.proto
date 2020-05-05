@@ -33,5 +33,6 @@ message Message {
   double l_Clock = 7;
 
   int32 rID = 8;
-
+  
+  int32 ma_Timestamp = 9;
 }

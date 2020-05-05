@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='kvstore',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\tmsg.proto\x12\x07kvstore\"\xd3\x02\n\x07Message\x12\n\n\x02ip\x18\x01 \x01(\t\x12(\n\x06\x63onsis\x18\x02 \x01(\x0e\x32\x18.kvstore.Message.ConType\x12)\n\x07request\x18\x03 \x01(\x0e\x32\x18.kvstore.Message.ReqType\x12%\n\x03\x61\x63k\x18\x04 \x01(\x0e\x32\x18.kvstore.Message.AckType\x12\x0c\n\x04\x64\x61ta\x18\x05 \x01(\t\x12\x0f\n\x07l_Clock\x18\x07 \x01(\x01\x12\x0b\n\x03rID\x18\x08 \x01(\x05\"P\n\x07\x43onType\x12\x0b\n\x07NO_TYPE\x10\x00\x12\x0e\n\nLINEARIZED\x10\x01\x12\x0e\n\nSEQUENTIAL\x10\x02\x12\n\n\x06\x43\x41USAL\x10\x03\x12\x0c\n\x08\x45VENTUAL\x10\x04\"%\n\x07ReqType\x12\x08\n\x04NULL\x10\x00\x12\x07\n\x03SET\x10\x01\x12\x07\n\x03GET\x10\x02\"\x1b\n\x07\x41\x63kType\x12\x08\n\x04\x46\x41IL\x10\x00\x12\x06\n\x02OK\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\tmsg.proto\x12\x07kvstore\"\xe9\x02\n\x07Message\x12\n\n\x02ip\x18\x01 \x01(\t\x12(\n\x06\x63onsis\x18\x02 \x01(\x0e\x32\x18.kvstore.Message.ConType\x12)\n\x07request\x18\x03 \x01(\x0e\x32\x18.kvstore.Message.ReqType\x12%\n\x03\x61\x63k\x18\x04 \x01(\x0e\x32\x18.kvstore.Message.AckType\x12\x0c\n\x04\x64\x61ta\x18\x05 \x01(\t\x12\x0f\n\x07l_Clock\x18\x07 \x01(\x01\x12\x0b\n\x03rID\x18\x08 \x01(\x05\x12\x14\n\x0cma_Timestamp\x18\t \x01(\x05\"P\n\x07\x43onType\x12\x0b\n\x07NO_TYPE\x10\x00\x12\x0e\n\nLINEARIZED\x10\x01\x12\x0e\n\nSEQUENTIAL\x10\x02\x12\n\n\x06\x43\x41USAL\x10\x03\x12\x0c\n\x08\x45VENTUAL\x10\x04\"%\n\x07ReqType\x12\x08\n\x04NULL\x10\x00\x12\x07\n\x03SET\x10\x01\x12\x07\n\x03GET\x10\x02\"\x1b\n\x07\x41\x63kType\x12\x08\n\x04\x46\x41IL\x10\x00\x12\x06\n\x02OK\x10\x01\x62\x06proto3'
 )
 
 
@@ -52,8 +52,8 @@ _MESSAGE_CONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=214,
-  serialized_end=294,
+  serialized_start=236,
+  serialized_end=316,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_CONTYPE)
 
@@ -78,8 +78,8 @@ _MESSAGE_REQTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=296,
-  serialized_end=333,
+  serialized_start=318,
+  serialized_end=355,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_REQTYPE)
 
@@ -100,8 +100,8 @@ _MESSAGE_ACKTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=335,
-  serialized_end=362,
+  serialized_start=357,
+  serialized_end=384,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGE_ACKTYPE)
 
@@ -162,6 +162,13 @@ _MESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ma_Timestamp', full_name='kvstore.Message.ma_Timestamp', index=7,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -178,7 +185,7 @@ _MESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=23,
-  serialized_end=362,
+  serialized_end=384,
 )
 
 _MESSAGE.fields_by_name['consis'].enum_type = _MESSAGE_CONTYPE

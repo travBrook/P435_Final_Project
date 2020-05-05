@@ -2,7 +2,7 @@
 
 import msg_pb2
 
-def build(ip, consis, request, ack, data, l_Clock, rID = 0):
+def build(ip, consis, request, ack, data, l_Clock, rID = 0, ma_Timestamp = 0):
     message = msg_pb2.Message()
     message.ip = ip
     message.consis = consis
@@ -11,6 +11,7 @@ def build(ip, consis, request, ack, data, l_Clock, rID = 0):
     message.data = data
     message.l_Clock = l_Clock
     message.rID = rID
+    message.ma_Timestamp = ma_Timestamp
     return message
 
 """
